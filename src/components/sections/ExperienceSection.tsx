@@ -1,103 +1,184 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Briefcase, GraduationCap } from 'lucide-react';
 
 const experiences = [
-   {
-    title: 'Intern',
-    company: 'Horeca Solutions',
-    location: 'Baneshwor, Kathmandu',
-    period: 'June 2024 - August 2024',
-    description: 'Developed and deployed websites, mostly handled frontend. Also did documentation and became familiar with Microsoft tools.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Microsoft Office'],
-    type: 'internship',
+  {
+    title: 'Software Developer & Website Manager',
+    company: 'ProCare / Surgical Mart Nepal',
+    location: 'Kathmandu',
+    period: 'Present',
+    description:
+      'Developing and managing web systems for medical product platforms including Surgical Mart Nepal. Responsible for backend systems, deployment, and software improvements.',
+    technologies: ['Django', 'React', 'PostgreSQL', 'System deployment'],
+    type: 'work',
+    icon: Briefcase,
   },
   {
-    title: 'Software Intern',
-    company: 'Nepal Telecom',
-    location: 'On site',
+    title: 'Automation Intern',
+    company: 'Nepal Telecom (NTC)',
+    location: 'Kathmandu',
     period: 'June 2025',
-    description: 'Worked in a large company, understood software development workflows in enterprise environments.',
-    technologies: [],
+    description:
+      'Worked on automation related workflows and gained experience in enterprise scale systems and telecommunications infrastructure.',
+    technologies: ['Automation tools', 'System documentation', 'Software workflows'],
     type: 'internship',
+    icon: Briefcase,
   },
   {
     title: 'UI Assistant',
     company: 'Tapasya Creations',
-    location: 'Sankhamul, Kathmandu',
-    period: 'Nov 2023 - Jan 2024',
-    description: 'Assisted in UI design, improved UX and aesthetics. First company experience, introduced to real work culture.',
-    technologies: ['Canva', 'Adobe Photoshop', 'Adobe Illustrator'],
-    type: 'research',
+    location: 'Kathmandu',
+    period: 'Nov 2023 – Jan 2024',
+    description:
+      'Worked on UI design and frontend support for multiple digital projects. Assisted in improving user interface layouts and user experience while learning professional development workflows.',
+    technologies: ['UI Design', 'HTML', 'CSS', 'JavaScript'],
+    type: 'internship',
+    icon: Briefcase,
+  },
+  {
+    title: 'Freelance Media & Web Support',
+    company: 'Raag Restaurant',
+    location: 'Kathmandu',
+    period: 'Freelance',
+    description:
+      'Handled UI updates, media content management, and digital presence support for restaurant based projects.',
+    technologies: ['UI design', 'Web updates', 'Digital media management'],
+    type: 'freelance',
+    icon: Briefcase,
   },
 ];
 
 const education = [
   {
     degree: 'BSc in Computer Science',
-    school: 'University of Wolverhampton',
+    school: 'University of Wolverhampton (via Herald College Kathmandu)',
     location: 'Kathmandu, Nepal',
     period: '2023 - 2026',
-    gpa: 'Ongoing',
-    relevant: ['Machine Learning', 'AI Ethics', 'Software Development', 'Project Management'],
+    courses: ['Machine Learning', 'AI Ethics', 'Software Development', 'Project Management'],
+    icon: GraduationCap,
   },
 ];
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-20 bg-muted/30">
+    <section id="experience" className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Experience</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              My journey through internships, research, and academic pursuits
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Experience & Education</h2>
+            <div className="w-12 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto"></div>
           </div>
 
-          {/* Experience Timeline */}
-          <div className="space-y-8 mb-16">
-            <h3 className="text-2xl font-semibold mb-8">Professional Experience</h3>
-            {experiences.map((exp, index) => (
-              <Card key={index} className="animate-fade-in-up">
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <div>
-                      <CardTitle className="text-xl">{exp.title}</CardTitle>
-                      <CardDescription className="text-base font-medium text-primary">
-                        {exp.company} • {exp.location}
-                      </CardDescription>
+          {/* Professional Experience */}
+          <div className="mb-16 animate-fade-in-up">
+            <h3 className="text-2xl font-bold mb-8 flex items-center">
+              <Briefcase className="h-6 w-6 mr-3 text-indigo-400" />
+              Professional Experience
+            </h3>
+
+            <div className="space-y-4">
+              {experiences.map((exp, index) => (
+                <Card
+                  key={index}
+                  className="relative border-slate-700/50 bg-slate-900/30 hover:bg-slate-900/50 transition-all duration-300 group"
+                >
+                  {/* Timeline line connector (optional visual) */}
+                  {index !== experiences.length - 1 && (
+                    <div className="absolute left-8 top-20 h-12 w-0.5 bg-gradient-to-b from-indigo-500/50 to-transparent -bottom-4"></div>
+                  )}
+
+                  <CardHeader>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                      <div className="flex-1">
+                        <CardTitle className="text-xl sm:text-2xl text-slate-50">
+                          {exp.title}
+                        </CardTitle>
+                        <CardDescription className="text-base font-semibold text-indigo-300 mt-1">
+                          {exp.company} • {exp.location}
+                        </CardDescription>
+                      </div>
+                      <div className="text-sm font-medium text-slate-400 whitespace-nowrap">
+                        {exp.period}
+                      </div>
                     </div>
-                    <div className="text-sm text-muted-foreground font-medium">
-                      {exp.period}
+                  </CardHeader>
+
+                  <CardContent>
+                    <p className="text-slate-300 mb-4 leading-relaxed">
+                      {exp.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech, techIndex) => (
+                        <Badge
+                          key={techIndex}
+                          variant="outline"
+                          className="border-indigo-500/30 text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/20"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Education */}
+          <div className="animate-fade-in-up">
+            <h3 className="text-2xl font-bold mb-8 flex items-center">
+              <GraduationCap className="h-6 w-6 mr-3 text-cyan-400" />
+              Education
+            </h3>
+
+            {education.map((edu, index) => (
+              <Card
+                key={index}
+                className="border-slate-700/50 bg-slate-900/30 hover:bg-slate-900/50 transition-all duration-300"
+              >
+                <CardHeader>
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                    <div className="flex-1">
+                      <CardTitle className="text-xl sm:text-2xl text-slate-50">
+                        {edu.degree}
+                      </CardTitle>
+                      <CardDescription className="text-base font-semibold text-cyan-300 mt-1">
+                        {edu.school}
+                      </CardDescription>
+                      <p className="text-sm text-slate-400 mt-1">{edu.location}</p>
+                    </div>
+                    <div className="text-sm font-medium text-slate-400 whitespace-nowrap">
+                      {edu.period}
                     </div>
                   </div>
                 </CardHeader>
+
                 <CardContent>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {exp.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="outline">
-                        {tech}
-                      </Badge>
-                    ))}
+                  <div>
+                    <p className="text-sm font-semibold text-slate-300 mb-3">Relevant Coursework:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {edu.courses.map((course, courseIndex) => (
+                        <Badge
+                          key={courseIndex}
+                          variant="outline"
+                          className="border-cyan-500/30 text-cyan-300 bg-cyan-500/10"
+                        >
+                          {course}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-
-          {/* Education */}
-          <div className="animate-fade-in-up">
-            <h3 className="text-2xl font-semibold mb-8">Education</h3>
-            {education.map((edu, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <div>
-                      <CardTitle className="text-xl">{edu.degree}</CardTitle>
+        </div>
+      </div>
+    </section>
+  );
+}
                       <CardDescription className="text-base font-medium text-primary">
                         {edu.school} • {edu.location}
                       </CardDescription>

@@ -1,103 +1,137 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Github, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, Zap } from 'lucide-react';
 
 const projects = [
   {
-    title: 'Web apps',
-    description: 'Web app like weather app which shows past weather data and a movie sharing app where you and ypur love ones can watch movies together and share your thoughts.',
-    image: 'https://miro.medium.com/v2/resize:fit:2000/0*zj_kGMq6f2ZxW7p3.png',
-    tags: ['React Native',  'Firebase' , 'Node.js', 'Express'],
-    github: 'https://github.com/Prayag-1/watch-together-app',
-    featured: true,
+    title: 'UdharoGuru – AI Powered Credit Tracking Platform',
+    description:
+      'A financial management platform designed for tracking personal and business credit transactions. The system includes OCR based receipt scanning, analytics dashboards, and automated reminders.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+    tags: ['Django', 'React', 'PostgreSQL', 'Tesseract OCR', 'JWT'],
+    highlights: ['OCR based data extraction', 'Financial analytics dashboard', 'Account management'],
+    github: 'https://github.com/Prayag-1/',
   },
   {
-    title: 'AI-Powered infant mortatlity rate prediction',
-    description: 'A machine learning model that predicts infant mortality rates using demographic and health data, providing insights for healthcare policy.',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&h=300&fit=crop',
-    tags: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
-    github: 'https://github.com/codewprayag/FinalAI-',
-    demo: 'https://demo.com',
-    featured: true,
+    title: 'Surgical Mart Nepal – E-Commerce Medical Platform',
+    description:
+      'Developed and managed a full-stack e-commerce platform for medical and surgical products in Nepal. Built backend infrastructure, inventory systems, and admin dashboards for order management.',
+    image: 'https://images.unsplash.com/photo-1460925895917-adf4e6d41cef?w=600&h=400&fit=crop',
+    tags: ['Django', 'PostgreSQL', 'React', 'REST APIs'],
+    highlights: ['Inventory tracking system', 'Order management', 'Admin dashboard'],
+    github: 'https://github.com/Prayag-1/',
   },
   {
-    title: 'Java Applications',
-    description: 'A collection of Java applications Like banking software attendence tracker which i made for my self to use while i was a project manager in my college,also a quiz application',
-    image: 'https://th.bing.com/th/id/OIP.uDEtrBWFiURX4Am-l_faaAHaEc?w=269&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-    tags: ['Java main', 'Java Swing', 'MySQL', 'JDBC'],
-    github: 'https://github.com/Prayag-1/Banking-Software',
-    demo: 'https://demo.com',
-    featured: false,
-  },
-  {
-    title: 'Project Management',
-    description: 'A project management venture in which i learned about scrum and agile methodologies, and how to manage a team effectively.',
-    image: 'https://th.bing.com/th/id/OIP.rWaFJz5Uw-SBRWObo5zk3AHaDx?rs=1&pid=ImgDetMain',
-    tags: ['Project Management', 'Scrum', 'Agile', 'Reports'],
-    github: 'https://github.com/KarMa063/ZippyTrip',
-    demo: 'https://demo.com',
-    featured: false,
+    title: 'ProCare / Surgical Mart Website Management',
+    description:
+      'Worked on website development and software management for ProCare and Surgical Mart Nepal including system improvements, deployment workflows, and feature development.',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop',
+    tags: ['React', 'Django', 'PostgreSQL', 'Git'],
+    highlights: ['Website maintenance', 'Feature development', 'System deployment'],
+    github: 'https://github.com/Prayag-1/',
   },
 ];
 
 export function ProjectsSection() {
-  const featuredProjects = projects.filter(p => p.featured);
-  const otherProjects = projects.filter(p => !p.featured);
-
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 bg-slate-900/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
+          {/* Header */}
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A selection of projects that showcase my skills in AI, software development, and problem-solving
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Featured Projects</h2>
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+              Showcase of recent projects demonstrating full-stack development, AI integration, and system design
             </p>
+            <div className="w-12 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto mt-6"></div>
           </div>
 
-          {/* Featured Projects */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {featuredProjects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-shadow duration-300 animate-fade-in-up">
-                <div className="aspect-video overflow-hidden rounded-t-lg">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+          {/* Projects Grid */}
+          <div className="grid lg:grid-cols-1 gap-8">
+            {projects.map((project, index) => (
+              <Card
+                key={index}
+                className="group relative border-slate-700/50 bg-slate-900/40 hover:bg-slate-900/60 transition-all duration-300 overflow-hidden"
+              >
+                {/* Gradient border on hover */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500/0 via-cyan-500/0 to-indigo-500/0 group-hover:from-indigo-500/10 group-hover:via-cyan-500/10 group-hover:to-indigo-500/10 transition-all duration-300 pointer-events-none"></div>
+
+                <div className="grid md:grid-cols-3 gap-6 relative z-10">
+                  {/* Image Section */}
+                  <div className="md:col-span-1 overflow-hidden rounded-lg">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-64 md:h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="md:col-span-2 p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <CardTitle className="text-2xl sm:text-3xl mb-2">{project.title}</CardTitle>
+                          <CardDescription className="text-base text-slate-300 leading-relaxed">
+                            {project.description}
+                          </CardDescription>
+                        </div>
+                        <Zap className="h-5 w-5 text-amber-400 flex-shrink-0 ml-4" />
+                      </div>
+
+                      {/* Highlights */}
+                      <div className="my-4">
+                        <p className="text-sm font-semibold text-slate-300 mb-2">Key Features:</p>
+                        <ul className="space-y-1">
+                          {project.highlights.map((highlight, hIndex) => (
+                            <li key={hIndex} className="text-sm text-slate-400 flex items-center">
+                              <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-2"></span>
+                              {highlight}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tags.map((tag, tagIndex) => (
+                          <Badge
+                            key={tagIndex}
+                            variant="secondary"
+                            className="bg-indigo-500/20 border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/30"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CTA Buttons */}
+                    <div className="flex gap-3 pt-4 border-t border-slate-700/50">
+                      <Button asChild variant="outline" className="border-indigo-500/30 hover:border-indigo-500/60 hover:bg-indigo-500/10">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4 mr-2" />
+                          View Code
+                        </a>
+                      </Button>
+                      <Button asChild className="bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 flex-1">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          Explore Project
+                          <ExternalLink className="h-4 w-4 ml-2" />
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4 mr-2" />
-                        Code
-                      </a>
-                    </Button>
-                    <Button size="sm" asChild>
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        Live Demo
-                        <ArrowRight className="h-4 w-4 ml-2" />
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
           </div>
 
           {/* Other Projects */}
